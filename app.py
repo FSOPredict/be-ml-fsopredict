@@ -78,12 +78,12 @@ def predict_all():
         ber = float(model_ber.predict(df_ber)[0])
 
         return jsonify({
-            'visibility': vis,
-            'condition_code': cond_code,
-            'condition_label': cond_label,
+            'predicted_visibility': vis,
+            'predicted_condition_code': cond_code,
+            'predicted_condition_label': cond_label,
             'attenuation': attenuation,
-            'q': q,
-            'ber': ber
+            'q_value': q,
+            'ber_prediction': ber
         })
     except Exception as e:
         return jsonify({'error': str(e)}), 400
