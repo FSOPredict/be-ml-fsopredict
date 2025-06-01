@@ -72,8 +72,8 @@ def predict_all():
             'visibility': vis,
             'q': q,
             'Attenuation': attenuation,
-            'Power': data['Power'],
-            'Range': data['Range']
+            'Power': data['power'],
+            'Range': data['range']
         }])
         ber = float(model_ber.predict(df_ber)[0])
 
@@ -126,8 +126,8 @@ def predict_ber():
             'visibility': visibility,
             'q': q,
             'Attenuation': attenuation,
-            'Power': data['Power'],
-            'Range': data['Range']
+            'Power': data['power'],
+            'Range': data['range']
         }])
         ber = float(model_ber.predict(df_ber)[0])
         return jsonify({
