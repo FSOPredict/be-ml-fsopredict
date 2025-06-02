@@ -2,7 +2,4 @@
 nixPkgs = ["git", "git-lfs"]
 
 [phases.build]
-cmds = ["git lfs install", "git lfs pull", "pip install -r requirements.txt"]
-
-[start]
-cmd = "gunicorn app:app"
+cmds = ["git lfs install", "git lfs pull"]
