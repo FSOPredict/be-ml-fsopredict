@@ -3,9 +3,9 @@ nixPkgs = ["python310"]
 
 [phases.install]
 cmds = [
-  "curl -L -o models/best_regression_model_conditions.joblib https://github.com/FSOPredict/be-ml-fsopredict/blob/main/models/best_regression_model_conditions.joblib"
-  "curl -L -o models/best_regression_model_vis.joblib https://github.com/FSOPredict/be-ml-fsopredict/blob/main/models/best_regression_model_vis.joblib"
-  "curl -L -o models/best_regression_model.joblib https://github.com/FSOPredict/be-ml-fsopredict/blob/main/models/best_regression_model.joblib"
+  "curl -L -o models/best_regression_model_conditions.joblib https://github.com/FSOPredict/be-ml-fsopredict/blob/main/models/best_regression_model_conditions.joblib",
+  "curl -L -o models/best_regression_model_vis.joblib https://github.com/FSOPredict/be-ml-fsopredict/blob/main/models/best_regression_model_vis.joblib",
+  "curl -L -o models/best_regression_model.joblib https://github.com/FSOPredict/be-ml-fsopredict/blob/main/models/best_regression_model.joblib",
   "pip install -r requirements.txt"
 ]
 
