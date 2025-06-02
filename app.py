@@ -10,9 +10,9 @@ app = Flask(__name__)
 
 # GitHub URLs for models (replace with your actual raw URLs)
 MODEL_URLS = {
-    'models/best_regression_model.joblib': 'https://github.com/FSOPredict/be-ml-fsopredict/blob/main/models/best_regression_model.joblib',
-    'models/best_regression_model_vis.joblib': 'https://github.com/FSOPredict/be-ml-fsopredict/blob/main/models/best_regression_model_vis.joblib',
-    'models/best_regression_model_conditions.joblib': 'https://github.com/FSOPredict/be-ml-fsopredict/blob/main/models/best_regression_model_conditions.joblib',
+    'models/best_regression_model.joblib': 'https://raw.githubusercontent.com/FSOPredict/be-ml-fsopredict/main/models/best_regression_model.joblib',
+    'models/best_regression_model_vis.joblib': 'https://raw.githubusercontent.com/FSOPredict/be-ml-fsopredict/main/models/best_regression_model_vis.joblib',
+    'models/best_regression_model_conditions.joblib': 'https://raw.githubusercontent.com/FSOPredict/be-ml-fsopredict/main/models/best_regression_model_conditions.joblib',
 }
 
 # Download function
