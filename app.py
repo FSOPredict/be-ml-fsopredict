@@ -2,13 +2,43 @@ from flask import Flask, request, jsonify
 import pandas as pd
 import numpy as np
 import joblib
+import os
+import requests
 
 app = Flask(__name__)
 
+
+# GitHub URLs for models (replace with your actual raw URLs)
+MODEL_URLS = {
+    'models/best_regression_model.joblib': 'https://github.com/FSOPredict/be-ml-fsopredict/blob/main/models/best_regression_model.joblib',
+    'models/best_regression_model_vis.joblib': 'https://github.com/FSOPredict/be-ml-fsopredict/blob/main/models/best_regression_model_vis.joblib',
+    'models/best_regression_model_conditions.joblib': 'https://github.com/FSOPredict/be-ml-fsopredict/blob/main/models/best_regression_model_conditions.joblib',
+}
+
+# Download function
+def download_model_if_missing(local_path, url):
+    if not os.path.exists(local_path):
+        print(f"Model not found at {local_path}. Downloading from {url}...")
+        os.makedirs(os.path.dirname(local_path), exist_ok=True)
+        response = requests.get(url)
+        if response.status_code == 200:
+            with open(local_path, 'wb') as f:
+                f.write(response.content)
+            print(f"Downloaded and saved: {local_path}")
+        else:
+            raise Exception(f"Failed to download model from {url} (Status code: {response.status_code})")
+
+# Load models with auto-download
+def load_model(path):
+    if path in MODEL_URLS:
+        download_model_if_missing(path, MODEL_URLS[path])
+    return joblib.load(path)
+
 # Load models
-model_ber = joblib.load('models/best_regression_model.joblib')
-model_vis = joblib.load('models/best_regression_model_vis.joblib')
-model_conditions = joblib.load('models/best_regression_model_conditions.joblib')
+model_ber = load_model('models/best_regression_model.joblib')
+model_vis = load_model('models/best_regression_model_vis.joblib')
+model_conditions = load_model('models/best_regression_model_conditions.joblib')
+
 
 # Mapping for weather condition code to label
 conditions_mapping = {
